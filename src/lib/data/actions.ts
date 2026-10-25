@@ -13,7 +13,7 @@ import { findCourseByLesson, findCourseByQuiz, isUserEnrolled, userIdsFor } from
 import { hashPassword } from "@/lib/auth/passwords";
 import { evaluateDiscountCode, normalizeDiscountCode } from "@/lib/discount";
 import { currentMonthKey } from "@/lib/instructor-stats";
-import type { CatalogState, Course, CourseCategory, DiscountType, Module } from "@/lib/types";
+import type { CatalogState, Course, CourseCategory, DiscountChannel, DiscountType, Module } from "@/lib/types";
 import { saveUploadedImage } from "@/lib/uploads";
 import { slugify } from "@/lib/utils";
 import { parseVideoLink } from "@/lib/video";
@@ -493,7 +493,7 @@ function parseCouponForm(formData: FormData) {
   }
 
   const channelRaw = String(formData.get("channel") ?? "standard");
-  const channel = channelRaw === "ugc" ? "ugc" : "standard";
+  const channel: DiscountChannel = channelRaw === "ugc" ? "ugc" : "standard";
   const influencerName = String(formData.get("influencerName") ?? "").trim();
   if (channel === "ugc" && !influencerName) {
     throw new Error("اسم المشهور مطلوب");

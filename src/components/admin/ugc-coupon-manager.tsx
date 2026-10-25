@@ -159,6 +159,7 @@ function UgcCouponRow({
             {coupon.isActive ? "إيقاف" : "تفعيل"}
           </Button>
           <ConfirmDeleteButton
+            label="حذف"
             confirmMessage={`حذف كود ${coupon.code} للمشهور ${coupon.influencerName ?? ""}؟`}
             onConfirm={() => deleteDiscountCode(coupon.id)}
           />
