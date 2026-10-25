@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
+import { InstructorAvatar } from "@/components/instructor/instructor-avatar";
 import { CircleCheck, Clock, Play, Users } from "lucide-react";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ProtectedVimeoPlayer } from "@/components/player/protected-vimeo-player";
@@ -92,12 +92,11 @@ export function CourseDetailsView({
 
         {instructor ? (
           <section className="mb-6 flex items-center gap-4 rounded-2xl glass p-5">
-            <Image
+            <InstructorAvatar
+              name={instructor.name}
               src={instructor.avatarUrl}
-              alt={instructor.name}
-              width={64}
-              height={64}
-              className="size-16 rounded-full object-cover"
+              size={64}
+              className="size-16"
             />
             <div>
               <p className="text-sm text-primary">{instructor.title}</p>

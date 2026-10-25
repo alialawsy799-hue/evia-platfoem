@@ -69,12 +69,17 @@ export function CreateInstructorDialog() {
           <Field label="المسمى الوظيفي" name="title" placeholder="مثل: مدرّب تصميم" />
           <Field label="سنوات الخبرة" name="yearsExperience" type="number" defaultValue="1" />
           <Field label="التخصصات" name="specialties" placeholder="البرمجة، التصميم" />
-          <ImageFileField key={uploadKey} name="avatar" label="رفع صورة من الحاسوب" />
+          <ImageFileField
+            key={uploadKey}
+            name="avatar"
+            label="صورة المدرّس (اختياري)"
+            hint="يمكن حفظ المدرّس بدون صورة حالياً"
+          />
           <div className="grid gap-2">
             <Label htmlFor="bio">نبذة</Label>
             <Textarea id="bio" name="bio" placeholder="تعريف مختصر بالمدرّس" />
           </div>
-          {error ? <p className="text-sm text-rose-300">{error}</p> : null}
+          {error ? <p className="text-sm text-rose-600">{error}</p> : null}
           <Button type="submit" disabled={busy}>
             {busy ? "جارٍ الحفظ..." : "حفظ المدرس"}
           </Button>

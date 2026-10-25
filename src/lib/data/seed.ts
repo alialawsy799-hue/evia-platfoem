@@ -48,6 +48,7 @@ export const REMOVED_SEED_INSTRUCTOR_IDS = [
   "ins-yousef",
   "ins-adel",
   "ins-raneen",
+  "ins-meta",
 ] as const;
 
 export const SEED_INSTRUCTORS: Instructor[] = [
@@ -85,13 +86,13 @@ export const SEED_INSTRUCTORS: Instructor[] = [
     pendingBalance: 0,
   },
   {
-    id: "ins-meta",
-    name: "فريق التسويق",
-    title: "مدرّبو إعلانات ميتا",
-    avatarUrl: "/uploads/courses/meta-ads.jpg",
-    bio: "فريق متخصص في الترويج عبر فيسبوك وإنستغرام: بناء الحملات، استهداف الجمهور، وقراءة نتائج الإعلانات لتحويل المشاهدات إلى مبيعات.",
-    yearsExperience: 6,
-    specialties: ["إعلانات ميتا", "الترويج", "فيسبوك", "إنستغرام"],
+    id: "ins-ahmed-karim",
+    name: "الأستاذ أحمد كريم",
+    title: "مدرّب إعلانات ميتا بزنس",
+    avatarUrl: "",
+    bio: "مدرب متخصص في إعلانات ميتا بزنس، يبسّط بناء الحملات على فيسبوك وإنستغرام من تحديد الجمهور والميزانية حتى قراءة النتائج وتحسين الأداء. يعتمد أسلوباً عملياً واضحاً ليخرج الطالب قادراً على إطلاق حملات ترويج قابلة للقياس.",
+    yearsExperience: 5,
+    specialties: ["إعلانات ميتا", "ميتا بزنس", "الترويج"],
     balance: 0,
     pendingBalance: 0,
   },
@@ -218,7 +219,7 @@ const BASE_SEED_COURSES: Course[] = [
     description:
       "تعلّم بناء حملات إعلانات ميتا من الصفر: تحديد الجمهور، إعداد الميزانية، صناعة الإعلان، وقراءة النتائج لتحسين الترويج خطوة بخطوة.",
     thumbnailUrl: "/uploads/courses/meta-ads.jpg",
-    instructorId: "ins-meta",
+    instructorId: "ins-ahmed-karim",
     introVimeoId: DEMO_VIMEO,
     price: 0,
     salePrice: null,

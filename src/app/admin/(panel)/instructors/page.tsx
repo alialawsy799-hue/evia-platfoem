@@ -1,7 +1,7 @@
 import { CreateInstructorDialog } from "@/components/admin/create-instructor-dialog";
 import { DeleteInstructorButton } from "@/components/admin/delete-instructor-button";
 import { unstable_noStore as noStore } from "next/cache";
-import Image from "next/image";
+import { InstructorAvatar } from "@/components/instructor/instructor-avatar";
 import { readStore } from "@/lib/data/store";
 import { Badge } from "@/components/ui/badge";
 import { formatNumber, formatPrice } from "@/lib/utils";
@@ -33,12 +33,11 @@ export default async function AdminInstructorsPage() {
               className="rounded-2xl border border-border bg-card p-5"
             >
               <div className="flex items-center gap-4">
-                <Image
+                <InstructorAvatar
+                  name={instructor.name}
                   src={instructor.avatarUrl}
-                  alt={instructor.name}
-                  width={64}
-                  height={64}
-                  className="size-16 rounded-full object-cover"
+                  size={64}
+                  className="size-16"
                 />
                 <div>
                   <h3 className="font-bold">{instructor.name}</h3>

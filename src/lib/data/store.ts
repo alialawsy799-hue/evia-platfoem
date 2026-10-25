@@ -30,10 +30,7 @@ function mergeMissingFromSeed(store: CatalogState): CatalogState {
   const removedCourses = new Set(removedCourseIds);
   const removedInstructors = new Set(removedInstructorIds);
 
-  const seedInstructorIds = new Set(seed.instructors.map((item) => item.id));
-  const instructors = store.instructors.filter(
-    (item) => !removedInstructors.has(item.id) && seedInstructorIds.has(item.id),
-  );
+  const instructors = store.instructors.filter((item) => !removedInstructors.has(item.id));
   for (const instructor of seed.instructors) {
     if (
       !removedInstructors.has(instructor.id) &&
@@ -46,15 +43,20 @@ function mergeMissingFromSeed(store: CatalogState): CatalogState {
     course.id === "frontend-mastery" ||
     course.title === "تطوير الويب" ||
     course.title === "تطوير واجهات الويب";
-  const allowedCourseIds = new Set(seed.courses.map((course) => course.id));
+  const seedCoursesById = new Map(seed.courses.map((course) => [course.id, course]));
   const courses = store.courses
-    .filter((course) => allowedCourseIds.has(course.id) && !removedCourses.has(course.id))
+    .filter((course) => !removedCourses.has(course.id))
     .map((course) => {
+      const seedCourse = seedCoursesById.get(course.id);
+      const instructorId =
+        seedCourse && removedInstructors.has(course.instructorId)
+          ? seedCourse.instructorId
+          : course.instructorId;
       if (isLiveCourse(course)) {
-        return { ...course, comingSoon: course.comingSoon ?? false };
+        return { ...course, instructorId, comingSoon: course.comingSoon ?? false };
       }
-      if (typeof course.comingSoon === "boolean") return course;
-      return { ...course, comingSoon: true, price: 0, salePrice: null };
+      if (typeof course.comingSoon === "boolean") return { ...course, instructorId };
+      return { ...course, instructorId, comingSoon: true, price: 0, salePrice: null };
     });
   for (const course of seed.courses) {
     if (!removedCourses.has(course.id) && !courses.some((item) => item.id === course.id)) {

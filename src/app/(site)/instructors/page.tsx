@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { InstructorAvatar } from "@/components/instructor/instructor-avatar";
 import { Badge } from "@/components/ui/badge";
 import { getInstructors, getPublishedCourses } from "@/lib/data/store";
 import { getLessonCount } from "@/lib/types";
@@ -36,12 +36,11 @@ export default async function InstructorsPage() {
                 className="rounded-2xl border border-border bg-card p-5 transition hover:border-primary/40"
               >
                 <div className="flex items-center gap-4">
-                  <Image
+                  <InstructorAvatar
+                    name={instructor.name}
                     src={instructor.avatarUrl}
-                    alt={instructor.name}
-                    width={72}
-                    height={72}
-                    className="size-[72px] rounded-full object-cover ring-2 ring-primary/30"
+                    size={72}
+                    className="size-[72px] ring-2 ring-primary/30"
                   />
                   <div>
                     <h2 className="text-lg font-bold">{instructor.name}</h2>

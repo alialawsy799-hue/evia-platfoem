@@ -104,9 +104,7 @@ export async function createInstructor(formData: FormData) {
     id: `ins-${Date.now()}`,
     name,
     title: String(formData.get("title") ?? "").trim() || "مدرّب",
-    avatarUrl:
-      avatarUrl ||
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80",
+    avatarUrl: avatarUrl || "",
     bio: String(formData.get("bio") ?? "").trim() || "مدرّب في منصة إيفيا.",
     yearsExperience: Number(formData.get("yearsExperience")) || 1,
     specialties: specialties.length ? specialties : ["تدريس"],
