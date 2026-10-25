@@ -127,7 +127,7 @@ export function ProtectedVimeoPlayer({
     <div
       ref={containerRef}
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-white/10 bg-black glow-border no-select",
+        "relative overflow-hidden rounded-2xl border border-border bg-black glow-border no-select",
         obscured && "player-blurred",
         className,
       )}
@@ -165,7 +165,7 @@ export function ProtectedVimeoPlayer({
           allowFullScreen
         />
       ) : (
-        <div className="grid aspect-video place-items-center bg-[#0A0D14] text-sm text-slate-400">
+        <div className="grid aspect-video place-items-center bg-muted text-sm text-muted-foreground">
           لم يُضف فيديو بعد
         </div>
       )}
@@ -185,8 +185,8 @@ export function ProtectedVimeoPlayer({
         </AnimatePresence>
       ) : null}
       {obscured ? (
-        <div className="absolute inset-0 z-30 grid place-items-center bg-[#0A0D14]/70 backdrop-blur-md">
-          <p className="text-sm text-slate-200">تم إخفاء المشغّل لحماية المحتوى</p>
+        <div className="absolute inset-0 z-30 grid place-items-center bg-primary/10 backdrop-blur-md">
+          <p className="text-sm text-foreground">تم إخفاء المشغّل لحماية المحتوى</p>
         </div>
       ) : null}
     </div>

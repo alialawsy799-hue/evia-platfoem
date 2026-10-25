@@ -25,9 +25,9 @@ export function CourseCard({
 
   return (
     <>
-      <article className="group overflow-hidden rounded-2xl border border-white/10 bg-[#12101c] transition-all duration-300 hover:-translate-y-1 hover:border-[#9D7BFF]/50 hover:shadow-[0_16px_50px_rgba(124,92,255,0.22)]">
+      <article className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_16px_40px_rgba(130,80,161,0.12)]">
         <Link href={`/courses/${course.id}`} className="block overflow-hidden">
-          <div className="relative aspect-[16/10]">
+          <div className="relative aspect-[8/5]">
             <Image
               src={course.thumbnailUrl}
               alt={course.title}
@@ -38,7 +38,7 @@ export function CourseCard({
               {CATEGORY_LABELS[course.category]}
             </Badge>
             {isComingSoon(course) ? (
-              <span className="absolute left-3 top-3 rounded-full bg-[#7C5CFF] px-3 py-1 text-xs font-extrabold tracking-[0.18em] text-white shadow-[0_0_16px_rgba(124,92,255,0.45)]">
+              <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-extrabold tracking-[0.18em] text-white">
                 SOON
               </span>
             ) : null}
@@ -47,15 +47,15 @@ export function CourseCard({
         <div className="space-y-3 p-4">
           <div>
             <h3 className="text-lg font-bold">{course.title}</h3>
-            {instructor ? <p className="text-sm text-slate-400">{instructor.name}</p> : null}
+            {instructor ? <p className="text-sm text-muted-foreground">{instructor.name}</p> : null}
           </div>
-          <div className="flex items-center justify-between text-sm text-slate-300">
+          <div className="flex items-center justify-between text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-1">
               <Star className="size-4 fill-amber-400 text-amber-400" />
               {course.rating.toFixed(1)}/5
             </span>
             <span className="inline-flex items-center gap-1">
-              <Clock className="size-4 text-violet-300" />
+              <Clock className="size-4 text-primary" />
               {formatDuration(getCourseDurationMinutes(course))}
             </span>
           </div>
@@ -105,7 +105,7 @@ function FilterMenu({
         <DropdownMenu.Content
           align="start"
           sideOffset={8}
-          className="z-50 max-h-80 min-w-56 overflow-y-auto rounded-2xl border border-white/10 bg-[#121824] p-1 shadow-[0_16px_50px_rgba(99,102,241,0.28)]"
+          className="z-50 max-h-80 min-w-56 overflow-y-auto rounded-2xl border border-border bg-card p-1 shadow-[0_16px_50px_rgba(99,102,241,0.28)]"
         >
           {options.map((option) => (
             <DropdownMenu.Item
@@ -114,12 +114,12 @@ function FilterMenu({
               className={cn(
                 "flex cursor-pointer items-center justify-between rounded-xl px-3 py-2.5 text-sm outline-none",
                 value === option.id
-                  ? "bg-violet-500/20 text-white"
-                  : "text-slate-300 data-[highlighted]:bg-white/5 data-[highlighted]:text-white",
+                  ? "bg-muted text-primary"
+                  : "text-muted-foreground data-[highlighted]:bg-muted data-[highlighted]:text-foreground",
               )}
             >
               {option.label}
-              {value === option.id ? <Check className="size-4 text-violet-300" /> : null}
+              {value === option.id ? <Check className="size-4 text-primary" /> : null}
             </DropdownMenu.Item>
           ))}
         </DropdownMenu.Content>
@@ -164,7 +164,7 @@ export function CourseGrid({
     <section id="courses" className="mx-auto w-[min(1120px,calc(100%-1.5rem))] pb-24">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-sm text-violet-300">المكتبة</p>
+          <p className="text-sm text-primary">المكتبة</p>
           <h2 className="text-3xl font-black">{heading}</h2>
         </div>
         <Button asChild variant="outline" size="sm">
@@ -174,7 +174,7 @@ export function CourseGrid({
       <div className="mb-6 flex flex-wrap items-center gap-2">
         <FilterMenu
           label="فرز الكورسات"
-          icon={<SlidersHorizontal className="size-4 text-violet-300" />}
+          icon={<SlidersHorizontal className="size-4 text-primary" />}
           value={category}
           options={COURSE_CATEGORIES.map((item) => ({ id: item.id, label: item.label }))}
           onChange={(next) => setCategory(next as CourseCategory | "all")}
@@ -182,7 +182,7 @@ export function CourseGrid({
         {instructors.length > 0 ? (
           <FilterMenu
             label="فرز حسب المدرس"
-            icon={<Users className="size-4 text-violet-300" />}
+            icon={<Users className="size-4 text-primary" />}
             value={instructorId}
             options={instructorOptions}
             onChange={setInstructorId}
@@ -200,7 +200,7 @@ export function CourseGrid({
           ))}
         </div>
       ) : (
-        <p className="rounded-2xl glass p-8 text-center text-slate-400">
+        <p className="rounded-2xl glass p-8 text-center text-muted-foreground">
           لا توجد كورسات مطابقة لهذا الفرز حالياً.
         </p>
       )}

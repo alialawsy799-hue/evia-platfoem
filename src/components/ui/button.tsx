@@ -9,18 +9,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-gradient-to-l from-[#7C5CFF] to-[#9D7BFF] text-white shadow-[0_8px_32px_rgba(124,92,255,0.45)] hover:shadow-[0_10px_40px_rgba(157,123,255,0.6)] hover:brightness-110",
+          "bg-primary text-primary-foreground shadow-[0_8px_24px_rgba(130,80,161,0.28)] hover:bg-[#6f428c] hover:shadow-[0_10px_28px_rgba(130,80,161,0.36)]",
         outline:
-          "border border-[#9D7BFF]/50 bg-transparent text-white hover:border-[#9D7BFF] hover:shadow-[0_0_24px_rgba(124,92,255,0.28)]",
-        ghost: "text-slate-200 hover:bg-white/5",
-        dark: "bg-[#12101c] border border-white/10 text-white hover:border-[#9D7BFF]/40 hover:shadow-[0_0_20px_rgba(124,92,255,0.2)]",
+          "border border-primary/40 bg-white text-primary hover:border-primary hover:bg-muted",
+        ghost: "text-foreground hover:bg-muted",
+        dark: "bg-muted border border-border text-foreground hover:border-primary/40",
         destructive:
-          "border border-rose-500/30 bg-rose-500/10 text-rose-200 hover:border-rose-400/50 hover:bg-rose-500/20",
+          "border border-rose-500/30 bg-rose-50 text-rose-700 hover:border-rose-400/50 hover:bg-rose-100",
       },
       size: {
         default: "h-11 px-5",
         sm: "h-9 px-4 text-xs",
-        lg: "h-12 px-7 text-base",
+        lg: "h-12 px-5 text-sm sm:px-7 sm:text-base",
         icon: "size-10",
       },
     },

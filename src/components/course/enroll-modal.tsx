@@ -102,27 +102,27 @@ export function EnrollModal({
               سيتم إرسال رسالة جاهزة لفريق إيفيا لتفعيل وصولك إلى «{course.title}».
             </DialogDescription>
           </DialogHeader>
-          <div className="space-y-3 rounded-xl border border-white/10 bg-white/5 p-4 text-sm">
+          <div className="space-y-3 rounded-xl border border-border bg-muted/60 p-4 text-sm">
             <p>
-              <span className="text-slate-400">الاسم: </span>
+              <span className="text-muted-foreground">الاسم: </span>
               {user?.fullName}
             </p>
             <p>
-              <span className="text-slate-400">البريد: </span>
+              <span className="text-muted-foreground">البريد: </span>
               {user?.email}
             </p>
             <p>
-              <span className="text-slate-400">الكورس: </span>
+              <span className="text-muted-foreground">الكورس: </span>
               {course.title}
             </p>
             <div className="flex items-baseline justify-between gap-3 pt-1">
-              <span className="text-slate-400">السعر</span>
+              <span className="text-muted-foreground">السعر</span>
               <div className="text-left">
-                <p className="font-bold text-violet-300" dir="ltr">
+                <p className="font-bold text-primary" dir="ltr">
                   {formatPrice(applied?.finalPrice ?? basePrice)}
                 </p>
                 {applied && applied.savings > 0 ? (
-                  <p className="text-xs text-slate-500 line-through" dir="ltr">
+                  <p className="text-xs text-muted-foreground line-through" dir="ltr">
                     {formatPrice(applied.originalPrice)}
                   </p>
                 ) : null}

@@ -15,9 +15,9 @@ export function StudentsTable({
   );
 
   return (
-    <div className="overflow-x-auto rounded-2xl border border-white/10 bg-[#121824]">
+    <div className="overflow-x-auto rounded-2xl border border-border bg-card">
       <table className="w-full min-w-[720px] text-right text-sm">
-        <thead className="bg-white/5 text-slate-400">
+        <thead className="bg-muted/60 text-muted-foreground">
           <tr>
             <th className="px-4 py-3 font-medium">الزبون</th>
             <th className="px-4 py-3 font-medium">البريد</th>
@@ -30,11 +30,11 @@ export function StudentsTable({
             const profile = profiles.find((entry) => entry.id === item.userId);
             const course = courses.find((entry) => entry.id === item.courseId);
             return (
-              <tr key={item.id} className="border-t border-white/5">
+              <tr key={item.id} className="border-t border-border">
                 <td className="px-4 py-3">{profile?.fullName ?? item.userId}</td>
-                <td className="px-4 py-3 text-slate-400">{profile?.email ?? "—"}</td>
+                <td className="px-4 py-3 text-muted-foreground">{profile?.email ?? "—"}</td>
                 <td className="px-4 py-3">{course?.title ?? item.courseId}</td>
-                <td className="px-4 py-3 text-slate-400">
+                <td className="px-4 py-3 text-muted-foreground">
                   {formatDateTime(item.createdAt)}
                 </td>
               </tr>
@@ -43,7 +43,7 @@ export function StudentsTable({
         </tbody>
       </table>
       {rows.length === 0 ? (
-        <p className="p-6 text-center text-sm text-slate-500">لا توجد تفعيلات بعد.</p>
+        <p className="p-6 text-center text-sm text-muted-foreground">لا توجد تفعيلات بعد.</p>
       ) : null}
     </div>
   );

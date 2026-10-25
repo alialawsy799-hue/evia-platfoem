@@ -63,7 +63,7 @@ export function CreateCourseDialog({ instructors }: { instructors: Instructor[] 
                 <select
                   id="instructorId"
                   name="instructorId"
-                  className="h-11 rounded-xl border border-white/10 bg-white/5 px-3 text-sm"
+                  className="h-11 rounded-xl border border-border bg-muted/60 px-3 text-sm"
                   defaultValue=""
                 >
                   <option value="">بدون مدرس</option>
@@ -79,7 +79,7 @@ export function CreateCourseDialog({ instructors }: { instructors: Instructor[] 
                 <select
                   id="category"
                   name="category"
-                  className="h-11 rounded-xl border border-white/10 bg-white/5 px-3 text-sm"
+                  className="h-11 rounded-xl border border-border bg-muted/60 px-3 text-sm"
                   defaultValue="programming"
                 >
                   {COURSE_CATEGORIES.filter((item) => item.id !== "all").map((item) => (
@@ -94,7 +94,7 @@ export function CreateCourseDialog({ instructors }: { instructors: Instructor[] 
                 <select
                   id="level"
                   name="level"
-                  className="h-11 rounded-xl border border-white/10 bg-white/5 px-3 text-sm"
+                  className="h-11 rounded-xl border border-border bg-muted/60 px-3 text-sm"
                   defaultValue="مبتدئ"
                 >
                   <option value="مبتدئ">مبتدئ</option>
@@ -102,12 +102,12 @@ export function CreateCourseDialog({ instructors }: { instructors: Instructor[] 
                   <option value="متقدم">متقدم</option>
                 </select>
               </div>
-              <label className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-sm text-slate-200 sm:col-span-2">
+              <label className="flex items-center gap-2 rounded-xl border border-border bg-muted/60 px-3 py-3 text-sm text-foreground sm:col-span-2">
                 <input
                   type="checkbox"
                   name="comingSoon"
                   defaultChecked
-                  className="size-4 accent-violet-500"
+                  className="size-4 accent-primary"
                 />
                 كورس قادم — إظهار Soon وإخفاء السعر
               </label>

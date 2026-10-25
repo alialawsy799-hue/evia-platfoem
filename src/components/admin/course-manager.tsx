@@ -40,7 +40,7 @@ export function CourseManager({
         <CreateCourseDialog instructors={instructors} />
       </div>
       {!selected ? (
-        <p className="rounded-2xl border border-white/10 bg-[#121824] p-6 text-slate-400">
+        <p className="rounded-2xl border border-border bg-card p-6 text-muted-foreground">
           لا توجد كورسات بعد. أضف كورساً جديداً للبدء.
         </p>
       ) : (
@@ -52,8 +52,8 @@ export function CourseManager({
                 className={cn(
                   "rounded-2xl border p-3 transition",
                   course.id === selected.id
-                    ? "border-violet-400/40 bg-violet-500/15"
-                    : "border-white/10 bg-[#121824]",
+                    ? "border-primary/30 bg-muted"
+                    : "border-border bg-card",
                 )}
               >
                 <button
@@ -62,7 +62,7 @@ export function CourseManager({
                   className="w-full text-right"
                 >
                   <span className="block font-semibold">{course.title}</span>
-                  <span className="mt-1 flex items-center justify-between text-xs text-slate-400">
+                  <span className="mt-1 flex items-center justify-between text-xs text-muted-foreground">
                     <Badge variant="outline">{CATEGORY_LABELS[course.category]}</Badge>
                     {isComingSoon(course) ? "Soon" : formatPrice(getEffectivePrice(course))}
                   </span>

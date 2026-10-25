@@ -11,7 +11,7 @@ export default async function InstructorAccountsPage() {
   const store = await readStore();
   return (
     <div className="space-y-6">
-      <p className="text-sm text-slate-400">
+      <p className="text-sm text-muted-foreground">
         أنشئ حساب دخول للمدرّس، ثم تابع عدد طلابه هذا الشهر والكلي، وسجّل المبلغ الذي استلمه من نسبته.
       </p>
       <InstructorAccountManager

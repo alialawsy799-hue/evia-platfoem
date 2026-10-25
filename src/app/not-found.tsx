@@ -8,7 +8,7 @@ export default function NotFound() {
       <main className="grid min-h-[60vh] place-items-center text-center">
         <div>
           <h1 className="text-3xl font-black">الصفحة غير موجودة</h1>
-          <Link href="/" className="mt-4 inline-block text-violet-300">
+          <Link href="/" className="mt-4 inline-block text-primary">
             العودة لإيفيا
           </Link>
         </div>

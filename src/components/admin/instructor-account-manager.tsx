@@ -58,10 +58,10 @@ export function InstructorAccountManager({
     <div className="space-y-6">
       <form
         action={onCreate}
-        className="space-y-4 rounded-2xl border border-white/10 bg-[#121824] p-5"
+        className="space-y-4 rounded-2xl border border-border bg-card p-5"
       >
         <h2 className="text-lg font-bold">إنشاء حساب مدرّس</h2>
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-muted-foreground">
           أنشئ بريداً وكلمة مرور للمدرّس حتى يدخل لوحة الأستاذ من الموقع.
         </p>
         <div className="grid gap-4 md:grid-cols-3">
@@ -71,7 +71,7 @@ export function InstructorAccountManager({
               id="instructorId"
               name="instructorId"
               required
-              className="h-11 rounded-xl border border-white/10 bg-white/5 px-3 text-sm"
+              className="h-11 rounded-xl border border-border bg-muted/60 px-3 text-sm"
               defaultValue=""
             >
               <option value="" disabled>
@@ -105,13 +105,13 @@ export function InstructorAccountManager({
           {busy ? "جارٍ الإنشاء..." : "إنشاء الحساب"}
         </Button>
         {unused.length === 0 ? (
-          <p className="text-sm text-slate-500">كل المدرّسين لديهم حسابات حالياً.</p>
+          <p className="text-sm text-muted-foreground">كل المدرّسين لديهم حسابات حالياً.</p>
         ) : null}
-        {message ? <p className="text-sm text-violet-300">{message}</p> : null}
+        {message ? <p className="text-sm text-primary">{message}</p> : null}
       </form>
 
       {accounts.length === 0 ? (
-        <p className="rounded-2xl border border-white/10 bg-[#121824] p-6 text-slate-400">
+        <p className="rounded-2xl border border-border bg-card p-6 text-muted-foreground">
           لا توجد حسابات أساتذة بعد. أنشئ حساباً من النموذج أعلاه.
         </p>
       ) : (
@@ -130,12 +130,12 @@ export function InstructorAccountManager({
             return (
               <article
                 key={account.id}
-                className="space-y-4 rounded-2xl border border-white/10 bg-[#121824] p-5"
+                className="space-y-4 rounded-2xl border border-border bg-card p-5"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <h3 className="font-bold">{instructor.name}</h3>
-                    <p className="text-sm text-violet-300" dir="ltr">
+                    <p className="text-sm text-primary" dir="ltr">
                       {account.email}
                     </p>
                   </div>
@@ -190,7 +190,7 @@ export function MonthlyReceiptForm({
   return (
     <form key={formKey} action={onConfirm} className="space-y-3">
       <input type="hidden" name="instructorId" value={instructorId} />
-      <p className="text-xs text-slate-500">أرباح شهر {monthLabel(month)}</p>
+      <p className="text-xs text-muted-foreground">أرباح شهر {monthLabel(month)}</p>
       <div className="flex flex-col gap-2 sm:flex-row sm:items-stretch">
         <Button type="submit" disabled={busy} className="sm:shrink-0">
           {busy ? "جارٍ الحفظ..." : "تم استلام الأرباح لهذا الشهر"}
@@ -206,7 +206,7 @@ export function MonthlyReceiptForm({
           className="sm:flex-1"
         />
       </div>
-      {status ? <p className="text-sm text-violet-300">{status}</p> : null}
+      {status ? <p className="text-sm text-primary">{status}</p> : null}
     </form>
   );
 }
@@ -223,14 +223,14 @@ export function ReceiptHistory({ receipts }: { receipts: MonthlyReceipt[] }) {
         </p>
       </div>
       {receipts.length === 0 ? (
-        <p className="text-sm text-slate-500">لا توجد أرباح مسجّلة بعد.</p>
+        <p className="text-sm text-muted-foreground">لا توجد أرباح مسجّلة بعد.</p>
       ) : (
-        <ul className="divide-y divide-white/10 overflow-hidden rounded-xl border border-white/10">
+        <ul className="divide-y divide-white/10 overflow-hidden rounded-xl border border-border">
           {receipts.map((item) => (
             <li key={item.id} className="flex items-center justify-between gap-3 px-4 py-3">
               <div>
                 <p className="font-bold tabular-nums">{formatPrice(item.amount)}</p>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-muted-foreground">
                   شهر {monthLabel(item.month)} · {formatDateTime(item.receivedAt)}
                 </p>
               </div>
@@ -244,9 +244,9 @@ export function ReceiptHistory({ receipts }: { receipts: MonthlyReceipt[] }) {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-white/5 p-3">
+    <div className="rounded-xl bg-muted/60 p-3">
       <p className="text-xl font-black tabular-nums">{value}</p>
-      <p className="text-xs text-slate-500">{label}</p>
+      <p className="text-xs text-muted-foreground">{label}</p>
     </div>
   );
 }

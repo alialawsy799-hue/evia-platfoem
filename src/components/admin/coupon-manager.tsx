@@ -42,10 +42,10 @@ export function CouponManager({
     <div className="space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-muted-foreground">
             أنشئ كوداً بنسبة أو بمبلغ ثابت، حدّد الكورسات، وأوقف أو احذف الكود في أي وقت.
           </p>
-          <p className="mt-1 text-xs text-slate-500">
+          <p className="mt-1 text-xs text-muted-foreground">
             {formatNumber(activeCount)} مفعّل من أصل {formatNumber(coupons.length)}
           </p>
         </div>
@@ -53,9 +53,9 @@ export function CouponManager({
       </div>
 
       {coupons.length ? (
-        <div className="overflow-x-auto rounded-2xl border border-white/10 bg-[#121824]/80">
+        <div className="overflow-x-auto rounded-2xl border border-border bg-card">
           <table className="w-full min-w-[860px] text-right text-sm">
-            <thead className="text-slate-500">
+            <thead className="text-muted-foreground">
               <tr>
                 <th className="px-4 py-3 font-medium">الكود</th>
                 <th className="px-4 py-3 font-medium">الخصم</th>
@@ -74,9 +74,9 @@ export function CouponManager({
           </table>
         </div>
       ) : (
-        <div className="rounded-2xl border border-dashed border-white/15 bg-[#121824]/60 p-10 text-center">
+        <div className="rounded-2xl border border-dashed border-border bg-card p-10 text-center">
           <p className="font-bold">لا توجد أكواد خصم بعد</p>
-          <p className="mt-2 text-sm text-slate-400">
+          <p className="mt-2 text-sm text-muted-foreground">
             أنشئ أول كود ليظهر للطلاب في نافذة الاشتراك قبل إرسال واتساب.
           </p>
         </div>
@@ -108,24 +108,24 @@ function CouponRow({ coupon, courses }: { coupon: DiscountCode; courses: Course[
   }
 
   return (
-    <tr className="border-t border-white/5">
+    <tr className="border-t border-border">
       <td className="px-4 py-3">
         <p className="font-bold tracking-wide" dir="ltr">
           {coupon.code}
         </p>
-        {coupon.note ? <p className="mt-0.5 text-xs text-slate-500">{coupon.note}</p> : null}
+        {coupon.note ? <p className="mt-0.5 text-xs text-muted-foreground">{coupon.note}</p> : null}
       </td>
       <td className="px-4 py-3 tabular-nums" dir="ltr">
         {coupon.type === "fixed" ? formatPrice(coupon.value) : formatDiscountValue(coupon)}
       </td>
-      <td className="max-w-[220px] px-4 py-3 text-slate-300">
+      <td className="max-w-[220px] px-4 py-3 text-muted-foreground">
         <span className="line-clamp-2">{courseLabel}</span>
       </td>
-      <td className="px-4 py-3 tabular-nums text-slate-300" dir="ltr">
+      <td className="px-4 py-3 tabular-nums text-muted-foreground" dir="ltr">
         {formatNumber(coupon.usedCount)}
         {coupon.maxUses != null ? ` / ${formatNumber(coupon.maxUses)}` : " / ∞"}
       </td>
-      <td className="px-4 py-3 text-slate-300">
+      <td className="px-4 py-3 text-muted-foreground">
         {coupon.expiresAt ? formatDate(coupon.expiresAt) : "بدون انتهاء"}
       </td>
       <td className="px-4 py-3">
@@ -252,7 +252,7 @@ function CouponDialog({
                 name="type"
                 value={type}
                 onChange={(event) => setType(event.target.value === "fixed" ? "fixed" : "percent")}
-                className="h-11 rounded-xl border border-white/10 bg-white/5 px-3 text-sm"
+                className="h-11 rounded-xl border border-border bg-muted/60 px-3 text-sm"
               >
                 <option value="percent">نسبة مئوية</option>
                 <option value="fixed">مبلغ ثابت</option>
@@ -304,36 +304,36 @@ function CouponDialog({
               defaultValue={coupon?.note ?? ""}
             />
           </div>
-          <label className="flex items-center gap-2 text-sm text-slate-300">
+          <label className="flex items-center gap-2 text-sm text-muted-foreground">
             <input
               type="checkbox"
               name="isActive"
               defaultChecked={coupon?.isActive ?? true}
-              className="size-4 accent-violet-500"
+              className="size-4 accent-primary"
             />
             الكود مفعّل فور الحفظ
           </label>
           <div className="grid gap-2">
             <Label>ينطبق على</Label>
-            <label className="flex items-center gap-2 text-sm text-slate-300">
+            <label className="flex items-center gap-2 text-sm text-muted-foreground">
               <input
                 type="checkbox"
                 checked={allCourses}
                 onChange={(event) => setAllCourses(event.target.checked)}
-                className="size-4 accent-violet-500"
+                className="size-4 accent-primary"
               />
               كل الكورسات
             </label>
             {!allCourses ? (
-              <div className="grid max-h-40 gap-2 overflow-y-auto rounded-xl border border-white/10 bg-white/5 p-3">
+              <div className="grid max-h-40 gap-2 overflow-y-auto rounded-xl border border-border bg-muted/60 p-3">
                 {courses.map((course) => (
-                  <label key={course.id} className="flex items-center gap-2 text-sm text-slate-300">
+                  <label key={course.id} className="flex items-center gap-2 text-sm text-muted-foreground">
                     <input
                       type="checkbox"
                       name="courseIds"
                       value={course.id}
                       defaultChecked={selected.has(course.id)}
-                      className="size-4 accent-violet-500"
+                      className="size-4 accent-primary"
                     />
                     {course.title}
                   </label>

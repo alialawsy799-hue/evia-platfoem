@@ -21,22 +21,22 @@ export default function CommunityPage() {
         <div>
           <input
             placeholder="ابحث في النقاشات"
-            className="mb-5 h-11 w-full rounded-full border border-white/10 bg-white/5 px-5 text-sm"
+            className="mb-5 h-11 w-full rounded-full border border-border bg-muted/60 px-5 text-sm"
           />
           <div className="space-y-4">
             {POSTS.map((post) => (
               <Card key={post.body} className="p-5">
                 <p className="text-sm font-bold">{post.name}</p>
-                <p className="text-xs text-slate-500">{post.time}</p>
-                <p className="mt-3 text-slate-200">{post.body}</p>
-                <p className="mt-4 text-xs text-slate-500">إعجاب · تعليق · مشاركة</p>
+                <p className="text-xs text-muted-foreground">{post.time}</p>
+                <p className="mt-3 text-foreground">{post.body}</p>
+                <p className="mt-4 text-xs text-muted-foreground">إعجاب · تعليق · مشاركة</p>
               </Card>
             ))}
           </div>
         </div>
         <aside className="rounded-2xl glass p-4">
           <h2 className="mb-3 font-bold">مجموعات نشطة</h2>
-          <ul className="space-y-2 text-sm text-slate-300">
+          <ul className="space-y-2 text-sm text-muted-foreground">
             <li>مجموعة تطوير الويب</li>
             <li>مختبر الذكاء الاصطناعي</li>
             <li>حماية المحتوى</li>

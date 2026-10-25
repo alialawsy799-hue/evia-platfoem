@@ -67,11 +67,11 @@ export function CourseDetailsView({
               <Badge variant="outline">{course.level}</Badge>
             </div>
             <h1 className="mt-3 text-3xl font-black md:text-4xl">{course.title}</h1>
-            <p className="mt-2 max-w-2xl text-slate-400">{course.description}</p>
+            <p className="mt-2 max-w-2xl text-muted-foreground">{course.description}</p>
           </div>
           <div className="rounded-2xl glass p-5">
             <PriceDisplay course={course} size="lg" />
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-muted-foreground">
               {durationLabel} · {formatNumber(lectureCount)} درس · {formatNumber(course.studentCount)} طالب
             </p>
             {canLearn ? (
@@ -100,9 +100,9 @@ export function CourseDetailsView({
               className="size-16 rounded-full object-cover"
             />
             <div>
-              <p className="text-sm text-violet-300">{instructor.title}</p>
+              <p className="text-sm text-primary">{instructor.title}</p>
               <h2 className="text-xl font-bold">{instructor.name}</h2>
-              <p className="text-sm text-slate-400">{instructor.bio}</p>
+              <p className="text-sm text-muted-foreground">{instructor.bio}</p>
             </div>
           </section>
         ) : null}
@@ -113,20 +113,20 @@ export function CourseDetailsView({
             hash={course.introVimeoHash}
             provider={course.introVideoProvider}
             mode="trailer"
-            className="border-violet-400/25 shadow-[0_0_28px_rgba(139,92,246,0.12)]"
+            className="border-primary/20 shadow-[0_0_28px_rgba(139,92,246,0.12)]"
           />
-          <p className="mt-3 text-center text-sm font-medium text-violet-200/90">
+          <p className="mt-3 text-center text-sm font-medium text-primary">
             الفيديو التعريفي عن دورة ({course.title})
           </p>
         </div>
 
         <section className="mb-4 rounded-2xl glass p-6">
           <h2 className="text-xl font-bold">ماذا ستتعلم في هذا الكورس؟</h2>
-          <p className="mt-2 text-sm leading-7 text-slate-400">{course.description}</p>
+          <p className="mt-2 text-sm leading-7 text-muted-foreground">{course.description}</p>
           <ul className="mt-4 space-y-2.5">
             {getCourseOutcomes(course).map((item) => (
-              <li key={item} className="flex items-start gap-2.5 text-sm text-slate-200">
-                <CircleCheck className="mt-0.5 size-4 shrink-0 text-violet-300" />
+              <li key={item} className="flex items-start gap-2.5 text-sm text-foreground">
+                <CircleCheck className="mt-0.5 size-4 shrink-0 text-primary" />
                 <span>{item}</span>
               </li>
             ))}
@@ -135,22 +135,22 @@ export function CourseDetailsView({
 
         <section className="mb-10 rounded-2xl glass p-6">
           <h2 className="flex items-center gap-2 text-xl font-bold">
-            <Users className="size-5 text-violet-300" />
+            <Users className="size-5 text-primary" />
             لمن هذا الكورس مناسب؟
           </h2>
-          <p className="mt-3 text-sm leading-7 text-slate-300">{getCourseAudience(course)}</p>
+          <p className="mt-3 text-sm leading-7 text-muted-foreground">{getCourseAudience(course)}</p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            <div className="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3">
-              <Play className="size-4 text-violet-300" />
+            <div className="flex items-center gap-3 rounded-xl bg-muted/60 px-4 py-3">
+              <Play className="size-4 text-primary" />
               <div>
-                <p className="text-xs text-slate-500">عدد المحاضرات</p>
+                <p className="text-xs text-muted-foreground">عدد المحاضرات</p>
                 <p className="font-bold">{formatNumber(lectureCount)}</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3">
-              <Clock className="size-4 text-violet-300" />
+            <div className="flex items-center gap-3 rounded-xl bg-muted/60 px-4 py-3">
+              <Clock className="size-4 text-primary" />
               <div>
-                <p className="text-xs text-slate-500">مدة الكورس</p>
+                <p className="text-xs text-muted-foreground">مدة الكورس</p>
                 <p className="font-bold">{durationLabel}</p>
               </div>
             </div>

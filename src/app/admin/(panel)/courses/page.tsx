@@ -7,7 +7,7 @@ export default async function AdminCoursesPage() {
   const store = await readStore();
   return (
     <div className="space-y-6">
-      <p className="text-sm text-slate-400">
+      <p className="text-sm text-muted-foreground">
         اختر كورساً من القائمة لتعديل بياناته، ثم الصق روابط فيديوهات الدروس مباشرة.
       </p>
       <CourseManager courses={store.courses} instructors={store.instructors} />

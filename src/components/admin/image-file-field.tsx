@@ -25,7 +25,7 @@ export function ImageFileField({
   return (
     <div className="grid gap-2">
       <Label htmlFor={inputId}>{label}</Label>
-      <div className="flex items-center gap-3 rounded-xl border border-dashed border-violet-400/40 bg-violet-500/5 p-3">
+      <div className="flex items-center gap-3 rounded-xl border border-dashed border-primary/30 bg-muted p-3">
         <div
           className={cn(
             "flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/10",
@@ -36,7 +36,7 @@ export function ImageFileField({
             // eslint-disable-next-line @next/next/no-img-element
             <img src={preview} alt="" className="size-full object-cover" />
           ) : (
-            <ImageUp className="size-5 text-violet-300" />
+            <ImageUp className="size-5 text-primary" />
           )}
         </div>
         <div className="min-w-0 flex-1">
@@ -45,7 +45,7 @@ export function ImageFileField({
             name={name}
             type="file"
             accept="image/*"
-            className="block w-full cursor-pointer text-sm text-slate-300 file:me-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-violet-600 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-violet-500"
+            className="block w-full cursor-pointer text-sm text-muted-foreground file:me-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-primary file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-[#6f428c]"
             onChange={(event) => {
               const file = event.target.files?.[0];
               setFileName(file?.name ?? "");
@@ -55,7 +55,7 @@ export function ImageFileField({
               });
             }}
           />
-          <p className="mt-1 truncate text-xs text-slate-400">{fileName || hint}</p>
+          <p className="mt-1 truncate text-xs text-muted-foreground">{fileName || hint}</p>
         </div>
       </div>
     </div>

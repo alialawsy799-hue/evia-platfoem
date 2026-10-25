@@ -47,7 +47,7 @@ export function AdminLoginForm() {
       <Button type="submit" className="w-full" disabled={busy}>
         {busy ? "جارٍ الدخول..." : "دخول لوحة الإدارة"}
       </Button>
-      <p className="text-center text-xs text-slate-500">
+      <p className="text-center text-xs text-muted-foreground">
         حساب المدرّس لا يدخل من هنا. استخدم تسجيل الدخول في الصفحة الرئيسية.
       </p>
     </form>

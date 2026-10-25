@@ -66,7 +66,7 @@ export function LearnStudio({
   if (!user) {
     return (
       <div className="grid min-h-screen place-items-center">
-        <p className="text-slate-300">سجّل الدخول لمتابعة الكورس.</p>
+        <p className="text-muted-foreground">سجّل الدخول لمتابعة الكورس.</p>
       </div>
     );
   }
@@ -75,7 +75,7 @@ export function LearnStudio({
     return (
       <div className="grid min-h-screen place-items-center p-6 text-center">
         <div>
-          <Lock className="mx-auto mb-3 size-8 text-violet-300" />
+          <Lock className="mx-auto mb-3 size-8 text-primary" />
           <h1 className="text-2xl font-bold">هذا الكورس مقفل</h1>
           <Button asChild className="mt-4">
             <Link href={`/courses/${course.id}`}>العودة لصفحة الكورس</Link>
@@ -86,8 +86,8 @@ export function LearnStudio({
   }
 
   return (
-    <div className="min-h-screen bg-[#07090f]">
-      <header className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+    <div className="min-h-screen bg-background">
+      <header className="flex items-center justify-between border-b border-border px-4 py-3">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" onClick={() => setSidebar((value) => !value)}>
             {sidebar ? <PanelRightClose className="size-4" /> : <PanelRightOpen className="size-4" />}
@@ -98,7 +98,7 @@ export function LearnStudio({
         </div>
         <div className="text-center">
           <p className="text-sm font-bold">{course.title}</p>
-          <p className="text-xs text-slate-500">{formatNumber(percent)}% مكتمل</p>
+          <p className="text-xs text-muted-foreground">{formatNumber(percent)}% مكتمل</p>
         </div>
         <div className="w-28">
           <Progress value={percent} />
@@ -133,7 +133,7 @@ export function LearnStudio({
               />
               <section className="mt-5 rounded-2xl glass p-5">
                 <h1 className="text-xl font-bold">{active.title}</h1>
-                <p className="mt-2 text-sm text-slate-400">{active.description}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{active.description}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Button variant="outline" onClick={() => completeLesson(active)}>
                     تعليم الدرس كمكتمل
@@ -147,9 +147,9 @@ export function LearnStudio({
           ) : null}
 
           {finished ? (
-            <div className="mt-6 rounded-2xl border border-violet-400/30 bg-violet-500/10 p-5">
+            <div className="mt-6 rounded-2xl border border-primary/25 bg-muted p-5">
               <h2 className="text-lg font-bold">أحسنت، أكملت المسار</h2>
-              <p className="mt-1 text-sm text-slate-300">
+              <p className="mt-1 text-sm text-muted-foreground">
                 تواصل مع الدعم عبر واتساب لاستلام شهادتك الرسمية.
               </p>
               <Button asChild className="mt-4">
@@ -170,10 +170,10 @@ export function LearnStudio({
         </main>
 
         {sidebar ? (
-          <aside className="border-s border-white/10 bg-[#0c1018]/90 p-4 backdrop-blur-xl">
+          <aside className="border-s border-border bg-card p-4 backdrop-blur-xl">
             {course.modules.map((module) => (
               <div key={module.id} className="mb-5">
-                <p className="mb-2 text-xs text-slate-500">{module.title}</p>
+                <p className="mb-2 text-xs text-muted-foreground">{module.title}</p>
                 <ul className="space-y-1">
                   {module.lessons.map((lesson) => {
                     const done = state.completedLessonIds.includes(lesson.id);
@@ -188,18 +188,18 @@ export function LearnStudio({
                           className={cn(
                             "flex w-full items-center justify-between rounded-xl px-3 py-2 text-right text-sm",
                             current
-                              ? "bg-violet-600/30 text-white shadow-[0_0_20px_rgba(99,102,241,0.25)]"
-                              : "text-slate-300 hover:bg-white/5",
+                              ? "bg-primary/15 text-primary"
+                              : "text-muted-foreground hover:bg-muted",
                           )}
                         >
-                          <span className="text-xs text-slate-500">
+                          <span className="text-xs text-muted-foreground">
                             {formatDuration(lesson.durationMinutes)}
                           </span>
                           <span className="flex items-center gap-2">
                             {done ? (
-                              <CheckCircle2 className="size-4 text-violet-300" />
+                              <CheckCircle2 className="size-4 text-primary" />
                             ) : (
-                              <ChevronRight className="size-4 text-slate-600" />
+                              <ChevronRight className="size-4 text-muted-foreground" />
                             )}
                             {lesson.title}
                           </span>
@@ -271,7 +271,7 @@ function QuizPanel({
               {question.options.map((option, index) => (
                 <label
                   key={option}
-                  className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm"
+                  className="flex items-center gap-2 rounded-xl border border-border bg-muted/60 px-3 py-2 text-sm"
                 >
                   <input
                     type="radio"

@@ -57,7 +57,7 @@ export function CourseEditor({
               id={`instructor-${course.id}`}
               name="instructorId"
               defaultValue={course.instructorId}
-              className="h-11 rounded-xl border border-white/10 bg-white/5 px-3 text-sm"
+              className="h-11 rounded-xl border border-border bg-muted/60 px-3 text-sm"
             >
               <option value="">بدون مدرس</option>
               {instructors.map((instructor) => (
@@ -73,7 +73,7 @@ export function CourseEditor({
               id={`category-${course.id}`}
               name="category"
               defaultValue={course.category}
-              className="h-11 rounded-xl border border-white/10 bg-white/5 px-3 text-sm"
+              className="h-11 rounded-xl border border-border bg-muted/60 px-3 text-sm"
             >
               {COURSE_CATEGORIES.filter((item) => item.id !== "all").map((item) => (
                 <option key={item.id} value={item.id}>
@@ -88,12 +88,12 @@ export function CourseEditor({
             label="رفع صورة الكورس من الحاسوب"
             previewClassName="size-16 rounded-xl"
           />
-          <label className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-sm text-slate-200 md:col-span-2">
+          <label className="flex items-center gap-2 rounded-xl border border-border bg-muted/60 px-3 py-3 text-sm text-foreground md:col-span-2">
             <input
               type="checkbox"
               name="comingSoon"
               defaultChecked={Boolean(course.comingSoon)}
-              className="size-4 accent-violet-500"
+              className="size-4 accent-primary"
             />
             كورس قادم — إظهار Soon وإخفاء السعر
           </label>

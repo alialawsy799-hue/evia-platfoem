@@ -20,9 +20,9 @@ const CERTIFICATE = {
 
 export default function CertificatePage() {
   return (
-    <main className="certificate-page min-h-screen bg-[#ece7f8] px-4 py-8 sm:px-6 sm:py-12">
+    <main className="certificate-page min-h-screen bg-muted px-4 py-8 sm:px-6 sm:py-12">
       <div className="mx-auto mb-6 flex w-[min(1100px,100%)] flex-wrap items-center justify-between gap-3 print:hidden">
-        <Link href="/" className="text-sm font-medium text-[#7C5CFF] transition hover:text-[#2a2440]">
+        <Link href="/" className="text-sm font-medium text-primary transition hover:text-foreground">
           العودة إلى إيفيا
         </Link>
         <PrintCertificateButton />

@@ -7,7 +7,7 @@ export default async function StudentsPage() {
   const store = await readStore();
   return (
     <div className="space-y-6">
-      <p className="text-sm text-slate-400">
+      <p className="text-sm text-muted-foreground">
         قائمة الزبائن المفعّلين والكورسات المرتبطة بكل حساب.
       </p>
       <StudentsTable

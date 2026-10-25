@@ -67,17 +67,17 @@ export function InstructorDashboard({
         <h1 className="mb-6 text-3xl font-black">لوحة المدرّس</h1>
         {user ? (
           <div id="profile" className="mb-5 rounded-2xl glass p-5">
-            <p className="text-xs font-semibold text-violet-300">حساب الأستاذ</p>
+            <p className="text-xs font-semibold text-primary">حساب الأستاذ</p>
             <p className="mt-1 text-lg font-bold">{instructor?.name || user.fullName}</p>
-            <p className="mt-1 text-sm text-white">{user.email}</p>
-            <p className="mt-1 text-xs text-slate-400">
+            <p className="mt-1 text-sm text-foreground">{user.email}</p>
+            <p className="mt-1 text-xs text-muted-foreground">
               تاريخ الدخول: {user.joinedAt ? formatDate(user.joinedAt) : "—"}
             </p>
           </div>
         ) : null}
 
         {!instructor ? (
-          <p className="rounded-2xl glass p-6 text-slate-400">
+          <p className="rounded-2xl glass p-6 text-muted-foreground">
             لم يتم ربط حسابك بملف مدرّس بعد. تواصل مع الإدارة لإنشاء حساب الأستاذ.
           </p>
         ) : (
@@ -102,7 +102,7 @@ export function InstructorDashboard({
 function Metric({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl glass p-5">
-      <p className="text-sm text-slate-400">{label}</p>
+      <p className="text-sm text-muted-foreground">{label}</p>
       <p className="mt-2 text-2xl font-black tabular-nums">{value}</p>
     </div>
   );

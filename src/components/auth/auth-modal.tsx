@@ -158,7 +158,7 @@ export function AuthModal({
                 : "إنشاء الحساب"}
           </Button>
         </form>
-        <div className="my-1 flex items-center gap-3 text-xs text-slate-500">
+        <div className="my-1 flex items-center gap-3 text-xs text-muted-foreground">
           <span className="h-px flex-1 bg-white/10" />
           أو
           <span className="h-px flex-1 bg-white/10" />
@@ -175,7 +175,7 @@ export function AuthModal({
         </Button>
         <button
           type="button"
-          className="text-center text-sm text-violet-300 hover:text-white"
+          className="text-center text-sm text-primary hover:text-foreground"
           onClick={() => {
             setMode((current) => (current === "login" ? "signup" : "login"));
             setError("");

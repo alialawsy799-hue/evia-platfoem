@@ -61,10 +61,10 @@ export function PayoutPanel({
         {rows.map((instructor) => (
           <Card key={instructor.id} className="p-4">
             <p className="font-bold">{instructor.name}</p>
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-muted-foreground">
               معلّق: {formatPrice(instructor.pendingBalance)}
             </p>
-            <p className="text-sm text-slate-400">رصيد: {formatPrice(instructor.balance)}</p>
+            <p className="text-sm text-muted-foreground">رصيد: {formatPrice(instructor.balance)}</p>
             <Button
               size="sm"
               className="mt-3 w-full"
@@ -83,7 +83,7 @@ export function PayoutPanel({
             <p>
               {formatPrice(payout.amount)} — {payout.note}
             </p>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-muted-foreground">
               {formatDateTime(payout.settledAt)}
             </p>
           </Card>

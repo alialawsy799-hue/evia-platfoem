@@ -130,7 +130,7 @@ export function CurriculumEditor({
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="text-lg font-bold">فيديوهات الكورس</h3>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-muted-foreground">
             أضف الوحدات والدروس، ثم الصق رابط كل فيديو من Vimeo أو YouTube.
           </p>
         </div>
@@ -143,7 +143,7 @@ export function CurriculumEditor({
       {draft.length ? (
         <div className="space-y-4">
           {draft.map((module, moduleIndex) => (
-            <section key={module.id} className="space-y-3 rounded-2xl border border-white/10 bg-[#0c1018] p-4">
+            <section key={module.id} className="space-y-3 rounded-2xl border border-border bg-[#0c1018] p-4">
               <div className="flex flex-wrap items-end gap-2">
                 <div className="min-w-60 flex-1 grid gap-2">
                   <Label>عنوان الوحدة</Label>
@@ -164,9 +164,9 @@ export function CurriculumEditor({
               </div>
 
               {module.lessons.map((lesson, lessonIndex) => (
-                <div key={lesson.id} className="space-y-3 rounded-xl border border-white/10 bg-white/5 p-3">
+                <div key={lesson.id} className="space-y-3 rounded-xl border border-border bg-muted/60 p-3">
                   <div className="flex items-center justify-between gap-2">
-                    <p className="text-sm font-semibold text-violet-200">الدرس {lessonIndex + 1}</p>
+                    <p className="text-sm font-semibold text-primary">الدرس {lessonIndex + 1}</p>
                     <Button
                       type="button"
                       size="sm"
@@ -234,7 +234,7 @@ export function CurriculumEditor({
           ))}
         </div>
       ) : (
-        <p className="rounded-xl border border-dashed border-white/15 p-6 text-center text-sm text-slate-400">
+        <p className="rounded-xl border border-dashed border-border p-6 text-center text-sm text-muted-foreground">
           لا توجد وحدات بعد. أضف وحدة ثم الصق روابط الفيديوهات.
         </p>
       )}

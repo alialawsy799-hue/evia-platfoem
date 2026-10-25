@@ -13,7 +13,7 @@ export function UserMenu({ user }: { user: Profile }) {
     <Link
       href={dashboardHref}
       aria-label="حسابي"
-      className="relative grid size-10 shrink-0 place-items-center overflow-hidden rounded-full bg-gradient-to-l from-[#7C5CFF] to-[#9D7BFF] text-sm font-bold text-white shadow-[0_8px_32px_rgba(124,92,255,0.45)] ring-2 ring-white/10 transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300"
+      className="relative grid size-10 shrink-0 place-items-center overflow-hidden rounded-full bg-primary text-sm font-bold text-white shadow-[0_8px_24px_rgba(130,80,161,0.28)] ring-2 ring-primary/15 transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
     >
       {user.avatarUrl && !imageFailed ? (
         // eslint-disable-next-line @next/next/no-img-element

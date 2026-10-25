@@ -66,10 +66,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-[280px_1fr]">
-      <aside className="hidden border-s border-white/10 bg-[#0c0a14]/90 p-5 backdrop-blur-xl lg:flex lg:flex-col">
+      <aside className="hidden border-s border-border bg-white p-5 lg:flex lg:flex-col">
         <div className="mb-8 px-2">
           <EviaLogo size="sm" />
-          <p className="mt-3 text-xs text-[#9D7BFF]">لوحة خارجية</p>
+          <p className="mt-3 text-xs text-primary">لوحة خارجية</p>
         </div>
         <LayoutGroup id="admin-nav-desktop">
           <nav className="grid gap-1">
@@ -82,13 +82,13 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                   href={tab.href}
                   className={cn(
                     "relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors",
-                    active ? "text-white" : "text-slate-300 hover:bg-white/5",
+                    active ? "text-primary" : "text-muted-foreground hover:bg-muted",
                   )}
                 >
                   {active ? (
                     <motion.span
                       layoutId="admin-desktop-pill"
-                      className="absolute inset-0 rounded-xl bg-violet-600/25 shadow-[0_0_20px_rgba(99,102,241,0.2)]"
+                      className="absolute inset-0 rounded-xl bg-primary/15 shadow-[0_0_20px_rgba(99,102,241,0.2)]"
                       transition={{ type: "spring", stiffness: 420, damping: 34 }}
                     />
                   ) : null}
@@ -107,10 +107,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       </aside>
 
       <div className="min-w-0">
-        <header className="sticky top-0 z-30 border-b border-white/10 bg-[#07060f]/80 px-4 py-3 backdrop-blur-xl">
+        <header className="sticky top-0 z-30 border-b border-border bg-background/80 px-4 py-3 backdrop-blur-xl">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <p className="text-xs text-slate-500 lg:hidden">EVIA Admin</p>
+              <p className="text-xs text-muted-foreground lg:hidden">EVIA Admin</p>
               <h2 className="text-lg font-bold">{current.label}</h2>
             </div>
             <div className="flex items-center gap-2">
@@ -137,14 +137,14 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                     className={cn(
                       "relative shrink-0 rounded-full border px-3 py-1.5 text-sm transition-colors",
                       active
-                        ? "border-violet-400/50 text-white"
-                        : "border-white/10 text-slate-300",
+                        ? "border-primary/40 text-primary"
+                        : "border-border text-muted-foreground",
                     )}
                   >
                     {active ? (
                       <motion.span
                         layoutId="admin-mobile-pill"
-                        className="absolute inset-0 rounded-full bg-violet-500/20"
+                        className="absolute inset-0 rounded-full bg-muted"
                         transition={{ type: "spring", stiffness: 420, damping: 34 }}
                       />
                     ) : null}

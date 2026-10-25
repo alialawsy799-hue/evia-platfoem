@@ -16,11 +16,11 @@ export default async function AdminInstructorsPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-slate-400">ملفات المدرّبين وعدد الكورسات المرتبطة بكل مدرّب.</p>
+        <p className="text-sm text-muted-foreground">ملفات المدرّبين وعدد الكورسات المرتبطة بكل مدرّب.</p>
         <CreateInstructorDialog />
       </div>
       {store.instructors.length === 0 ? (
-        <p className="rounded-2xl border border-white/10 bg-[#121824] p-6 text-slate-400">
+        <p className="rounded-2xl border border-border bg-card p-6 text-muted-foreground">
           لا يوجد مدرسون. أضف مدرّساً جديداً من الزر أعلاه.
         </p>
       ) : (
@@ -30,7 +30,7 @@ export default async function AdminInstructorsPage() {
           return (
             <article
               key={instructor.id}
-              className="rounded-2xl border border-white/10 bg-[#121824] p-5"
+              className="rounded-2xl border border-border bg-card p-5"
             >
               <div className="flex items-center gap-4">
                 <Image
@@ -42,10 +42,10 @@ export default async function AdminInstructorsPage() {
                 />
                 <div>
                   <h3 className="font-bold">{instructor.name}</h3>
-                  <p className="text-sm text-violet-300">{instructor.title}</p>
+                  <p className="text-sm text-primary">{instructor.title}</p>
                 </div>
               </div>
-              <p className="mt-3 text-sm text-slate-400">{instructor.bio}</p>
+              <p className="mt-3 text-sm text-muted-foreground">{instructor.bio}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {instructor.specialties.map((item) => (
                   <Badge key={item} variant="outline">
@@ -74,9 +74,9 @@ export default async function AdminInstructorsPage() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-white/5 p-3">
+    <div className="rounded-xl bg-muted/60 p-3">
       <p className="font-bold">{value}</p>
-      <p className="text-xs text-slate-500">{label}</p>
+      <p className="text-xs text-muted-foreground">{label}</p>
     </div>
   );
 }

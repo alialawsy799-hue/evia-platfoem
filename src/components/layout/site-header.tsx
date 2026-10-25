@@ -75,11 +75,11 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
       <header className="sticky top-4 z-40 mx-auto w-[min(1120px,calc(100%-1.5rem))]">
         <nav
           className={cn(
-            "glass flex items-center justify-between gap-3 rounded-full px-3 py-2 shadow-[0_10px_40px_rgba(0,0,0,0.35)]",
-            transparent && "bg-[#12101c]/70",
+            "glass flex items-center justify-between gap-3 rounded-full px-3 py-2 shadow-[0_10px_30px_rgba(130,80,161,0.08)]",
+            transparent && "bg-white/80",
           )}
         >
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 shrink items-center gap-1.5 sm:gap-2">
             {user ? (
               <>
                 <Button size="sm" variant="ghost" onClick={() => signOut()}>
@@ -89,16 +89,16 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
               </>
             ) : (
               <>
-                <Button size="sm" onClick={() => setOpen(true)}>
+                <Button size="sm" className="hidden sm:inline-flex" onClick={() => setOpen(true)}>
                   ابدأ التعلم الآن
                 </Button>
-                <Button size="sm" variant="outline" onClick={() => setOpen(true)}>
+                <Button size="sm" variant="outline" className="max-sm:px-2.5 max-sm:text-xs" onClick={() => setOpen(true)}>
                   تسجيل الدخول
                 </Button>
               </>
             )}
             <button
-              className="rounded-full p-2 text-slate-300 transition hover:bg-white/5 md:hidden"
+              className="rounded-full p-2 text-foreground transition hover:bg-muted md:hidden"
               onClick={() => setMenu((value) => !value)}
               aria-label={menu ? "إغلاق القائمة" : "القائمة"}
               aria-expanded={menu}
@@ -118,13 +118,13 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
                     onClick={(event) => onNavClick(link.href, event)}
                     className={cn(
                       "relative rounded-full px-3.5 py-1.5 transition-colors duration-200",
-                      active ? "text-white" : "text-slate-300 hover:bg-white/5 hover:text-white",
+                      active ? "text-primary" : "text-muted-foreground hover:bg-muted hover:text-foreground",
                     )}
                   >
                     {active ? (
                       <motion.span
                         layoutId="site-nav-pill"
-                        className="absolute inset-0 rounded-full bg-white/10 shadow-[0_0_18px_rgba(124,92,255,0.32)] ring-1 ring-[#9D7BFF]/35"
+                        className="absolute inset-0 rounded-full bg-muted ring-1 ring-primary/20"
                         transition={{ type: "spring", stiffness: 420, damping: 34 }}
                       />
                     ) : null}
@@ -135,7 +135,7 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
             </div>
           </LayoutGroup>
 
-          <Link href={homeHref} className="px-1" aria-label="إيفيا">
+          <Link href={homeHref} className="shrink-0 px-1" aria-label="إيفيا">
             <EviaLogo size="sm" />
           </Link>
         </nav>
@@ -166,8 +166,8 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
                       className={cn(
                         "block rounded-xl px-4 py-2.5 text-sm transition",
                         active
-                          ? "bg-violet-500/20 text-white"
-                          : "text-slate-300 hover:bg-white/5 hover:text-white",
+                          ? "bg-muted text-primary"
+                          : "text-muted-foreground hover:bg-muted hover:text-foreground",
                       )}
                     >
                       {link.label}
@@ -175,6 +175,11 @@ export function SiteHeader({ transparent = false }: { transparent?: boolean }) {
                   </motion.div>
                 );
               })}
+              {!user ? (
+                <Button className="mt-2 w-full" onClick={() => { setMenu(false); setOpen(true); }}>
+                  ابدأ التعلم الآن
+                </Button>
+              ) : null}
             </motion.div>
           ) : null}
         </AnimatePresence>

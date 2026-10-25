@@ -10,7 +10,7 @@ export default async function FinancePage() {
   const store = await readStore();
   return (
     <div className="space-y-6">
-      <p className="text-sm text-slate-400">
+      <p className="text-sm text-muted-foreground">
         راجع الأرصدة المعلّقة، نفّذ التسوية لتصفير الرصيد، وتابع سجل الدفعات.
       </p>
       <PayoutPanel instructors={store.instructors} payouts={store.payouts} />

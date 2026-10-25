@@ -13,7 +13,7 @@ export function PriceDisplay({
     return (
       <span
         className={cn(
-          "inline-flex font-extrabold tracking-[0.18em] text-[#9D7BFF]",
+          "inline-flex font-extrabold tracking-[0.18em] text-primary",
           size === "sm" && "text-sm",
           size === "md" && "text-lg",
           size === "lg" && "text-2xl",
@@ -30,7 +30,7 @@ export function PriceDisplay({
       <span
         dir="ltr"
         className={cn(
-          "inline-block font-bold text-violet-400 tabular-nums",
+          "inline-block font-bold text-primary tabular-nums",
           size === "sm" && "text-base",
           size === "md" && "text-xl",
           size === "lg" && "text-3xl",
@@ -42,7 +42,7 @@ export function PriceDisplay({
         <span
           dir="ltr"
           className={cn(
-            "inline-block text-slate-500 line-through tabular-nums",
+            "inline-block text-muted-foreground line-through tabular-nums",
             size === "lg" ? "text-lg" : "text-sm",
           )}
         >

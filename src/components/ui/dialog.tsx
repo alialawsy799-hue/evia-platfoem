@@ -38,7 +38,7 @@ function DialogContent({
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute left-4 top-4 rounded-full p-1 text-slate-400 hover:text-white">
+        <DialogPrimitive.Close className="absolute left-4 top-4 rounded-full p-1 text-muted-foreground hover:text-foreground">
           <X className="size-4" />
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
@@ -65,7 +65,7 @@ function DialogDescription({
 }: React.ComponentProps<typeof DialogPrimitive.Description>) {
   return (
     <DialogPrimitive.Description
-      className={cn("text-sm text-slate-400", className)}
+      className={cn("text-sm text-muted-foreground", className)}
       {...props}
     />
   );

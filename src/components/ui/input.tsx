@@ -7,8 +7,8 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
       type={type}
       className={cn(
         type === "file"
-          ? "block w-full cursor-pointer text-sm text-slate-300 file:me-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-violet-600 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-violet-500"
-          : "flex h-11 w-full rounded-xl border border-white/10 bg-white/5 px-4 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-violet-400/50 focus:ring-2 focus:ring-violet-500/20",
+          ? "block w-full cursor-pointer text-sm text-muted-foreground file:me-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-primary file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-[#6f428c]"
+          : "flex h-11 w-full rounded-xl border border-border bg-white px-4 text-sm text-foreground placeholder:text-muted-foreground outline-none transition focus:border-primary/50 focus:ring-2 focus:ring-primary/20",
         className,
       )}
       {...props}
@@ -20,7 +20,7 @@ function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
   return (
     <textarea
       className={cn(
-        "flex min-h-28 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-violet-400/50 focus:ring-2 focus:ring-violet-500/20",
+        "flex min-h-28 w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none transition focus:border-primary/50 focus:ring-2 focus:ring-primary/20",
         className,
       )}
       {...props}
@@ -30,7 +30,7 @@ function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
 
 function Label({ className, ...props }: React.ComponentProps<"label">) {
   return (
-    <label className={cn("text-sm font-medium text-slate-300", className)} {...props} />
+    <label className={cn("text-sm font-medium text-foreground", className)} {...props} />
   );
 }
 

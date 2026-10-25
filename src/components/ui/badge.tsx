@@ -10,9 +10,9 @@ function Badge({
     <span
       className={cn(
         "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold",
-        variant === "default" && "bg-violet-500/15 text-violet-200 border border-violet-400/20",
-        variant === "outline" && "border border-white/15 text-slate-300",
-        variant === "glow" && "bg-[#7C5CFF]/30 text-white shadow-[0_0_16px_rgba(124,92,255,0.45)]",
+        variant === "default" && "border border-primary/15 bg-muted text-primary",
+        variant === "outline" && "border border-border text-muted-foreground",
+        variant === "glow" && "bg-primary text-white",
         className,
       )}
       {...props}

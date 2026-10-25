@@ -14,7 +14,7 @@ export default async function AdminOverviewPage() {
 
   return (
     <div className="space-y-6">
-      <p className="max-w-2xl text-sm text-slate-400">
+      <p className="max-w-2xl text-sm text-muted-foreground">
         مرحباً بك في لوحة إيفيا. اختر تبويباً من القائمة لإدارة التفعيل، الكورسات، المدرسين، أو المالية.
       </p>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -32,11 +32,11 @@ export default async function AdminOverviewPage() {
         <Jump href="/admin/coupons" icon={TicketPercent} title="أكواد الخصم" text="أنشئ كوداً بنسبة أو مبلغاً ثابتاً وتحكم بتفعيله." />
         <Jump href="/admin/finance" icon={Wallet} title="المالية" text="تسوية الأرصدة وسجل الدفعات." />
       </div>
-      <section className="rounded-2xl border border-white/10 bg-[#121824]/80 p-5">
+      <section className="rounded-2xl border border-border bg-card p-5">
         <h3 className="mb-4 font-bold">آخر الكورسات</h3>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[640px] text-right text-sm">
-            <thead className="text-slate-500">
+            <thead className="text-muted-foreground">
               <tr>
                 <th className="pb-3 font-medium">الكورس</th>
                 <th className="pb-3 font-medium">السعر</th>
@@ -46,7 +46,7 @@ export default async function AdminOverviewPage() {
             </thead>
             <tbody>
               {store.courses.slice(0, 6).map((course) => (
-                <tr key={course.id} className="border-t border-white/5">
+                <tr key={course.id} className="border-t border-border">
                   <td className="py-3">{course.title}</td>
                   <td className="py-3 tabular-nums" dir="ltr">
                     {isComingSoon(course) ? "Soon" : formatPrice(getEffectivePrice(course))}
@@ -58,7 +58,7 @@ export default async function AdminOverviewPage() {
             </tbody>
           </table>
         </div>
-        <Link href="/admin/courses" className="mt-4 inline-block text-sm text-violet-300">
+        <Link href="/admin/courses" className="mt-4 inline-block text-sm text-primary">
           إدارة كل الكورسات
         </Link>
       </section>
@@ -68,8 +68,8 @@ export default async function AdminOverviewPage() {
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#121824] p-5">
-      <p className="text-sm text-slate-400">{label}</p>
+    <div className="rounded-2xl border border-border bg-card p-5">
+      <p className="text-sm text-muted-foreground">{label}</p>
       <p className="mt-2 text-2xl font-black tabular-nums" dir="ltr">{value}</p>
     </div>
   );
@@ -89,11 +89,11 @@ function Jump({
   return (
     <Link
       href={href}
-      className="rounded-2xl border border-white/10 bg-[#121824] p-5 transition hover:border-violet-400/40"
+      className="rounded-2xl border border-border bg-card p-5 transition hover:border-primary/40"
     >
-      <Icon className="mb-3 size-5 text-violet-300" />
+      <Icon className="mb-3 size-5 text-primary" />
       <h3 className="font-bold">{title}</h3>
-      <p className="mt-1 text-sm text-slate-400">{text}</p>
+      <p className="mt-1 text-sm text-muted-foreground">{text}</p>
     </Link>
   );
 }

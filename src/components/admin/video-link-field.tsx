@@ -43,7 +43,7 @@ export function VideoLinkField({
     <div className="grid gap-2">
       <Label htmlFor={id}>{label}</Label>
       <div className="relative">
-        <Link2 className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-500" />
+        <Link2 className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
         <Input
           id={id}
           name={name}
@@ -61,7 +61,7 @@ export function VideoLinkField({
           <p className="text-xs text-rose-300">الرابط غير صالح. الصق رابط Vimeo أو YouTube أو ملف mp4.</p>
         )
       ) : (
-        <p className="text-xs text-slate-500">الصق رابط الفيديو فقط، دون رفع ملف من جهازك.</p>
+        <p className="text-xs text-muted-foreground">الصق رابط الفيديو فقط، دون رفع ملف من جهازك.</p>
       )}
     </div>
   );

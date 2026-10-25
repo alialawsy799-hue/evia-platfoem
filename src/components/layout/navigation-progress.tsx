@@ -42,7 +42,7 @@ export function NavigationProgress() {
     <AnimatePresence>
       {visible ? (
         <motion.div
-          className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-0.5 origin-right bg-gradient-to-l from-[#7C5CFF] to-[#9D7BFF] shadow-[0_0_12px_rgba(157,123,255,0.8)]"
+          className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-0.5 origin-right bg-gradient-to-l from-primary to-secondary"
           initial={{ scaleX: 0.08 }}
           animate={{ scaleX: 0.72 }}
           exit={{ scaleX: 1, opacity: 0 }}
