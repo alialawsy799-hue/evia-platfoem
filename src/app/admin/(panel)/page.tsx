@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ComponentType } from "react";
-import { BookOpen, GraduationCap, KeyRound, TicketPercent, UserPlus, Users, Wallet } from "lucide-react";
+import { BookOpen, GraduationCap, KeyRound, Megaphone, TicketPercent, UserPlus, Users, Wallet } from "lucide-react";
 import { readStore } from "@/lib/data/store";
 import { getEffectivePrice, getLessonCount, isComingSoon } from "@/lib/types";
 import { formatNumber, formatPrice } from "@/lib/utils";
@@ -30,6 +30,7 @@ export default async function AdminOverviewPage() {
         <Jump href="/admin/instructors" icon={GraduationCap} title="المدرسين" text="ملفات المدرّبين وعدد كورساتهم." />
         <Jump href="/admin/instructor-accounts" icon={KeyRound} title="حساب الأستاذ" text="أنشئ حساب دخول للمدرّس وتابع طلابه وأرباحه الشهرية." />
         <Jump href="/admin/coupons" icon={TicketPercent} title="أكواد الخصم" text="أنشئ كوداً بنسبة أو مبلغاً ثابتاً وتحكم بتفعيله." />
+        <Jump href="/admin/ugc-coupons" icon={Megaphone} title="كوبون UGC" text="كود لكل مشهور، مع عدد الطلاب الذين سجّلوا واستخدموا كوده." />
         <Jump href="/admin/finance" icon={Wallet} title="المالية" text="تسوية الأرصدة وسجل الدفعات." />
       </div>
       <section className="rounded-2xl border border-border bg-card p-5">

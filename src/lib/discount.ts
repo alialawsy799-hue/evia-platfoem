@@ -1,4 +1,9 @@
-import { getEffectivePrice, type Course, type DiscountCode } from "@/lib/types";
+import {
+  getEffectivePrice,
+  type Course,
+  type DiscountCode,
+  type Enrollment,
+} from "@/lib/types";
 
 export function normalizeDiscountCode(value: string) {
   return value.trim().toUpperCase().replace(/\s+/g, "");
@@ -18,6 +23,21 @@ export function applyDiscountAmount(
 export function formatDiscountValue(coupon: Pick<DiscountCode, "type" | "value">) {
   if (coupon.type === "percent") return `${coupon.value}%`;
   return `${coupon.value} د.ع`;
+}
+
+export function isUgcCoupon(coupon: Pick<DiscountCode, "channel">) {
+  return coupon.channel === "ugc";
+}
+
+export function uniqueStudentsForCoupon(
+  coupon: Pick<DiscountCode, "code" | "usedByUserIds">,
+  enrollments: Enrollment[],
+) {
+  const code = coupon.code;
+  const fromEnrollments = enrollments
+    .filter((item) => item.discountCode && normalizeDiscountCode(item.discountCode) === code)
+    .map((item) => item.userId);
+  return Array.from(new Set([...(coupon.usedByUserIds ?? []), ...fromEnrollments]));
 }
 
 export type AppliedDiscount = {

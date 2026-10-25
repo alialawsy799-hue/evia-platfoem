@@ -305,7 +305,13 @@ export async function activateEnrollment(formData: FormData) {
       appliedCode = evaluated.coupon.code;
       paidAmount = evaluated.finalPrice;
       const coupon = store.discountCodes.find((item) => item.id === evaluated.coupon.id);
-      if (coupon) coupon.usedCount += 1;
+      if (coupon) {
+        coupon.usedCount += 1;
+        coupon.usedByUserIds = coupon.usedByUserIds ?? [];
+        if (!coupon.usedByUserIds.includes(profile.id)) {
+          coupon.usedByUserIds.push(profile.id);
+        }
+      }
     }
 
     store.enrollments.push({
@@ -322,6 +328,7 @@ export async function activateEnrollment(formData: FormData) {
   await writeStore(store);
   revalidatePublic();
   revalidatePath("/admin/coupons");
+  revalidatePath("/admin/ugc-coupons");
   return { ok: true, userId: profile.id };
 }
 
@@ -485,6 +492,13 @@ function parseCouponForm(formData: FormData) {
     throw new Error("تاريخ الانتهاء غير صالح");
   }
 
+  const channelRaw = String(formData.get("channel") ?? "standard");
+  const channel = channelRaw === "ugc" ? "ugc" : "standard";
+  const influencerName = String(formData.get("influencerName") ?? "").trim();
+  if (channel === "ugc" && !influencerName) {
+    throw new Error("اسم المشهور مطلوب");
+  }
+
   return {
     code,
     type,
@@ -494,11 +508,14 @@ function parseCouponForm(formData: FormData) {
     expiresAt,
     isActive: String(formData.get("isActive") ?? "") === "on",
     note: String(formData.get("note") ?? "").trim(),
+    channel,
+    influencerName: channel === "ugc" ? influencerName : undefined,
   };
 }
 
 function revalidateCoupons() {
   revalidatePath("/admin/coupons");
+  revalidatePath("/admin/ugc-coupons");
   revalidatePath("/admin", "layout");
   revalidatePath("/courses");
 }
@@ -524,8 +541,9 @@ export async function upsertDiscountCode(formData: FormData) {
     };
   } else {
     store.discountCodes.unshift({
-      id: `dc-${Date.now()}`,
+      id: parsed.channel === "ugc" ? `ugc-${Date.now()}` : `dc-${Date.now()}`,
       usedCount: 0,
+      usedByUserIds: [],
       createdAt: new Date().toISOString(),
       ...parsed,
     });

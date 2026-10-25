@@ -10,6 +10,7 @@ const TAB_ORDER = [
   "/admin/courses",
   "/admin/instructors",
   "/admin/coupons",
+  "/admin/ugc-coupons",
   "/admin/finance",
 ];
 

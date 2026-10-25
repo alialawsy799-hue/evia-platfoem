@@ -153,6 +153,8 @@ export type MonthlyReceipt = {
 
 export type DiscountType = "percent" | "fixed";
 
+export type DiscountChannel = "standard" | "ugc";
+
 export type DiscountCode = {
   id: string;
   code: string;
@@ -161,10 +163,13 @@ export type DiscountCode = {
   courseIds: string[];
   maxUses: number | null;
   usedCount: number;
+  usedByUserIds?: string[];
   expiresAt: string | null;
   isActive: boolean;
   note?: string;
   createdAt: string;
+  channel?: DiscountChannel;
+  influencerName?: string;
 };
 
 export type CatalogState = {

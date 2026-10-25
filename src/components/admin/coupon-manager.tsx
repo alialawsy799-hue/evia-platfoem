@@ -20,7 +20,7 @@ import {
   toggleDiscountCode,
   upsertDiscountCode,
 } from "@/lib/data/actions";
-import { formatDiscountValue } from "@/lib/discount";
+import { formatDiscountValue, isUgcCoupon } from "@/lib/discount";
 import type { Course, DiscountCode } from "@/lib/types";
 import { formatDate, formatNumber, formatPrice } from "@/lib/utils";
 
@@ -36,7 +36,8 @@ export function CouponManager({
   courses: Course[];
   coupons: DiscountCode[];
 }) {
-  const activeCount = coupons.filter((item) => item.isActive).length;
+  const regularCoupons = coupons.filter((item) => !isUgcCoupon(item));
+  const activeCount = regularCoupons.filter((item) => item.isActive).length;
 
   return (
     <div className="space-y-5">
@@ -46,13 +47,13 @@ export function CouponManager({
             أنشئ كوداً بنسبة أو بمبلغ ثابت، حدّد الكورسات، وأوقف أو احذف الكود في أي وقت.
           </p>
           <p className="mt-1 text-xs text-muted-foreground">
-            {formatNumber(activeCount)} مفعّل من أصل {formatNumber(coupons.length)}
+            {formatNumber(activeCount)} مفعّل من أصل {formatNumber(regularCoupons.length)}
           </p>
         </div>
         <CouponDialog courses={courses} />
       </div>
 
-      {coupons.length ? (
+      {regularCoupons.length ? (
         <div className="overflow-x-auto rounded-2xl border border-border bg-card">
           <table className="w-full min-w-[860px] text-right text-sm">
             <thead className="text-muted-foreground">
@@ -67,7 +68,7 @@ export function CouponManager({
               </tr>
             </thead>
             <tbody>
-              {coupons.map((coupon) => (
+              {regularCoupons.map((coupon) => (
                 <CouponRow key={coupon.id} coupon={coupon} courses={courses} />
               ))}
             </tbody>

@@ -8,6 +8,7 @@ import {
   GraduationCap,
   KeyRound,
   LayoutDashboard,
+  Megaphone,
   TicketPercent,
   UserPlus,
   Users,
@@ -26,6 +27,7 @@ export const ADMIN_TABS = [
   { href: "/admin/instructors", label: "المدرسين", icon: GraduationCap },
   { href: "/admin/instructor-accounts", label: "حساب الأستاذ", icon: KeyRound },
   { href: "/admin/coupons", label: "أكواد الخصم", icon: TicketPercent },
+  { href: "/admin/ugc-coupons", label: "كوبون UGC", icon: Megaphone },
   { href: "/admin/finance", label: "المالية", icon: Wallet },
 ] as const;
 
