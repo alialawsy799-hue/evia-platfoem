@@ -91,6 +91,10 @@ async function readStoreFile(filePath: string) {
   return clone(mergeMissingFromSeed(JSON.parse(raw) as CatalogState));
 }
 
+function seededState() {
+  return clone(mergeMissingFromSeed(createSeedState()));
+}
+
 export async function readStore(): Promise<CatalogState> {
   noStore();
   const candidates = [
@@ -104,7 +108,9 @@ export async function readStore(): Promise<CatalogState> {
       /* try next location */
     }
   }
-  return persist(createSeedState());
+  const fallback = seededState();
+  void persist(fallback);
+  return fallback;
 }
 
 export async function writeStore(next: CatalogState) {
@@ -112,8 +118,12 @@ export async function writeStore(next: CatalogState) {
 }
 
 export async function getPublishedCourses(): Promise<Course[]> {
-  const store = await readStore();
-  return store.courses.filter((course) => course.isPublished);
+  try {
+    const store = await readStore();
+    return store.courses.filter((course) => course.isPublished);
+  } catch {
+    return seededState().courses.filter((course) => course.isPublished);
+  }
 }
 
 export async function getCourseById(id: string): Promise<Course | undefined> {
@@ -127,8 +137,12 @@ export async function getInstructor(id: string): Promise<Instructor | undefined>
 }
 
 export async function getInstructors(): Promise<Instructor[]> {
-  const store = await readStore();
-  return store.instructors;
+  try {
+    const store = await readStore();
+    return store.instructors;
+  } catch {
+    return seededState().instructors;
+  }
 }
 
 export async function isEnrolled(userId: string, courseId: string) {

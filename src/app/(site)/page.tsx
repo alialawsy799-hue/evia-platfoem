@@ -6,10 +6,14 @@ import { getInstructors, getPublishedCourses } from "@/lib/data/store";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [courses, instructors] = await Promise.all([
-    getPublishedCourses(),
-    getInstructors(),
-  ]);
+  let courses: Awaited<ReturnType<typeof getPublishedCourses>> = [];
+  let instructors: Awaited<ReturnType<typeof getInstructors>> = [];
+  try {
+    [courses, instructors] = await Promise.all([getPublishedCourses(), getInstructors()]);
+  } catch {
+    courses = [];
+    instructors = [];
+  }
 
   return (
     <div>
