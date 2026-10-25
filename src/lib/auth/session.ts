@@ -14,7 +14,6 @@ type VerifiedSession = Profile & { sid: string };
 function secret() {
   const value = process.env.EVIA_AUTH_SECRET;
   if (value && value !== "change-me-in-production") return value;
-  if (process.env.NODE_ENV === "production") return "";
   return "evia-dev-auth-secret";
 }
 

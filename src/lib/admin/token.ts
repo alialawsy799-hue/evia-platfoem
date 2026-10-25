@@ -8,7 +8,6 @@ function secret() {
   if (value && value !== "change-me-in-production" && value !== "evia-admin-gate") {
     return value;
   }
-  if (process.env.NODE_ENV === "production") return "";
   return "evia-dev-admin-secret";
 }
 

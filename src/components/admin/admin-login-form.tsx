@@ -43,7 +43,7 @@ export function AdminLoginForm() {
           autoComplete="current-password"
         />
       </div>
-      {error ? <p className="text-sm text-rose-300">{error}</p> : null}
+      {error ? <p className="text-sm text-rose-600">{error}</p> : null}
       <Button type="submit" className="w-full" disabled={busy}>
         {busy ? "جارٍ الدخول..." : "دخول لوحة الإدارة"}
       </Button>
