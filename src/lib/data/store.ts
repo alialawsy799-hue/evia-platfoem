@@ -6,7 +6,16 @@ import { unstable_noStore as noStore } from "next/cache";
 import { createSeedState, REMOVED_SEED_INSTRUCTOR_IDS } from "@/lib/data/seed";
 import type { CatalogState, Course, Instructor } from "@/lib/types";
 
-const STORE_PATH = path.join(process.cwd(), "data", "catalog-store.json");
+function isServerless() {
+  return Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+}
+
+function storePath() {
+  if (isServerless()) {
+    return path.join("/tmp", "evia-catalog-store.json");
+  }
+  return path.join(process.cwd(), "data", "catalog-store.json");
+}
 
 function clone<T>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T;
@@ -67,19 +76,35 @@ function mergeMissingFromSeed(store: CatalogState): CatalogState {
 
 async function persist(state: CatalogState) {
   const snapshot = clone(state);
-  await fs.mkdir(path.dirname(STORE_PATH), { recursive: true });
-  await fs.writeFile(STORE_PATH, JSON.stringify(snapshot, null, 2), "utf8");
+  try {
+    const dest = storePath();
+    await fs.mkdir(path.dirname(dest), { recursive: true });
+    await fs.writeFile(dest, JSON.stringify(snapshot, null, 2), "utf8");
+  } catch {
+    // Serverless filesystems are read-only except /tmp; still return the snapshot.
+  }
   return snapshot;
+}
+
+async function readStoreFile(filePath: string) {
+  const raw = await fs.readFile(filePath, "utf8");
+  return clone(mergeMissingFromSeed(JSON.parse(raw) as CatalogState));
 }
 
 export async function readStore(): Promise<CatalogState> {
   noStore();
-  try {
-    const raw = await fs.readFile(STORE_PATH, "utf8");
-    return clone(mergeMissingFromSeed(JSON.parse(raw) as CatalogState));
-  } catch {
-    return persist(createSeedState());
+  const candidates = [
+    storePath(),
+    path.join(process.cwd(), "data", "catalog-store.json"),
+  ];
+  for (const candidate of [...new Set(candidates)]) {
+    try {
+      return await readStoreFile(candidate);
+    } catch {
+      /* try next location */
+    }
   }
+  return persist(createSeedState());
 }
 
 export async function writeStore(next: CatalogState) {

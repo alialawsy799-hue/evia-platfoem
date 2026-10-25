@@ -51,7 +51,11 @@ export async function saveUploadedImage(file: File, folder: string) {
     throw new Error("نوع الملف لا يطابق امتداده.");
   }
 
-  const dir = path.join(process.cwd(), "public", "uploads", folder);
+  const root =
+    process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME
+      ? path.join("/tmp", "uploads")
+      : path.join(process.cwd(), "public", "uploads");
+  const dir = path.join(root, folder);
   await mkdir(dir, { recursive: true });
 
   const filename = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${sniffed}`;

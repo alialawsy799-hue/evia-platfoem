@@ -40,6 +40,10 @@ yarn-error.log*
 # uploaded media
 /public/uploads/**
 !/public/uploads/.gitkeep
+!/public/uploads/courses/
+!/public/uploads/courses/**
+!/public/uploads/instructors/
+!/public/uploads/instructors/**
 
 # vercel
 .vercel
